@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>var words = [
+	
+	"monkey",
+	"apples",
+	"bananas",
+	];
+
+var word = words[Math.floor(Math.random() * words.length)];
+alert("Welcome To Hangman! Press Enter To Continue");
+let name = prompt("Please enter your name");
+let text;
+if (name == null || name == "") {
+  text = "User cancelled the prompt.";
+} else {
+  text = "Hello " + name + "! Good Luck!";
+}
+var answerArray = [];
+
+for( var i=0; i < word.length; i++) {
+	answerArray[i] = "_";
+}
+
+
+var remainingLetters = word.length;
+var guessesNr = 4;
+while((remainingLetters > 0) && (guessesNr > 0)) {
+	
+	alert("This word is " + word.length + " letters " + answerArray.join(" "));
+	
+	var guess = prompt("Guess a letter");
+
+	
+	if(guess===null) {
+		
+		break;
+		
+	} else if(guess.length !== 1) {
+		alert("Please enter a single letter!");
+	} else {
+		for(var j = 0; j < word.length; j++) {
+			if(word[j] === guess) {
+				
+                answerArray[j] = guess;
+				remainingLetters--;
+			
+			} else {	
+				
+			}
+		}
+	}
+	
+}
+
+
+alert("Great job! The answer was " + word);
+    </script>
+</body>
+</html>
